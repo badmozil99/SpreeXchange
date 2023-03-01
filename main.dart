@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spreexchange/screens/intro_screen.dart';
 import 'package:spreexchange/screens/onboarding_screen.dart';
 
 
