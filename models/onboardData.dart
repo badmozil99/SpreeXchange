@@ -16,18 +16,18 @@ class Onboard{
 final List<Onboard> onboardData = [
   Onboard(
       image: 'images/phoneLogo.png',
-      description: 'Trade with us to Enjoy a better',
-      text: 'Xperience'
+      description: 'Sign up today and enjoy our reliable and secure trading Xperience to maximize your growth potential!',
+      text: '  '
   ),
   Onboard(
       image: 'images/wallet.png',
-      description: 'Your assets are safe with us',
+      description: 'Sign up now and ensure the safety and security of your assets with us!',
       text: '  '
   ),
 
   Onboard(
       image: 'images/tick1.png',
-      description: 'Secure,Fast & Reliable',
+      description: 'Secure, Fast & Reliable',
       text: 'Best rate'
   ),
 ];
@@ -57,43 +57,42 @@ class onboardingContent extends StatelessWidget {
       children: [
         Image.asset(
           'images/spreeLogo.png',
-          height: 100.0,
-          width: 100.0,
+          height: 46.3,
+          width: 46.0,
         ),
         SizedBox(height: 10.0),
         Text(
           "Spree Xchange",
           style: TextStyle(
-              fontSize: 35.0,
+              fontSize: 20.0,
               fontWeight: FontWeight.w500,
               color: Color(0xff3f72d7)
           ),
         ),
-        SizedBox(height: 30.0),
+        SizedBox(height: 50.0),
         Image.asset(
           image,
           height: 228.0,
           width: 202.0,
         ),
-        SizedBox(height: 10.0),
+        SizedBox(height: 15.0),
         Text(
           description,
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w400,
               fontSize: 20.0,
-              color: Color(0xff3f72d7),
-              letterSpacing: -0.2
+              color: Color(0xff3f72d7)
           ),
         ),
+        SizedBox(height: 10.0),
         Text(
           text,
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w500,
               fontSize: 20.0,
-              color: Color(0xff3f72d7),
-              letterSpacing: -0.2
+              color: Color(0xff3f72d7)
           ),
         )
       ],

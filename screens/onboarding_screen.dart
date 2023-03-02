@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:spreexchange/screens/getstarted_screen.dart';
 import 'package:spreexchange/models/onboardData.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
+
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  int _pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +26,23 @@ class OnBoardingScreen extends StatelessWidget {
                     text: onboardData[index].text,
                   ),
                 itemCount: onboardData.length,
+                onPageChanged: (index){
+                    setState((){
+                      _pageIndex = index;
+                    });
+                },
                 physics: BouncingScrollPhysics(),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 196.0, bottom: 50.0),
+              child: Row(
+                children: [
+                  ...List.generate(onboardData.length, (index) => Padding(
+                    padding: const EdgeInsets.only(right: 4.0),
+                    child: SwipeIndicator( isActive: index == _pageIndex),
+                  ),)
+                ],
               ),
             ),
             Padding(
@@ -27,29 +50,6 @@ class OnBoardingScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => GetStartedScreen()));
-                    },
-                    style: TextButton.styleFrom(
-                        primary: Color(
-                            0xffFFFFFF
-                        ),
-                        backgroundColor: Color(0xff3f72d7),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0)
-                        ),
-                        fixedSize: Size(158.0,44.0)
-                    ),
-                    child: Text(
-                      'Get started',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          letterSpacing: 1
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 20.0),
                   TextButton(
                     onPressed: (){
 
@@ -76,11 +76,56 @@ class OnBoardingScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(width: 35.0),
+                  TextButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => GetStartedScreen()));
+                    },
+                    style: TextButton.styleFrom(
+                        primary: Color(
+                            0xffFFFFFF
+                        ),
+                        backgroundColor: Color(0xff3f72d7),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0)
+                        ),
+                        fixedSize: Size(158.0,44.0)
+                    ),
+                    child: Text(
+                      'Get started',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          letterSpacing: 1
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SwipeIndicator extends StatelessWidget {
+  const SwipeIndicator({
+    Key? key,
+    this.isActive = false
+  }) : super(key: key);
+
+  final bool isActive;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 300),
+      height: isActive? 12 : 4,
+      width: 4,
+      decoration: BoxDecoration(
+        color: isActive? Color(0xff3f72d7) : Color(0xff3f72d7).withOpacity(0.5),
+        borderRadius: BorderRadius.all(Radius.circular(12))
       ),
     );
   }
