@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:spreexchange/screens/getstarted_screen.dart';
+import 'package:spreexchange/models/constants.dart';
+import 'package:spreexchange/screens/login_screen.dart';
 import 'package:spreexchange/models/onboardData.dart';
+import 'package:spreexchange/screens/signup_screen1.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -52,7 +54,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 children: [
                   TextButton(
                     onPressed: (){
-
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginScreen()));
                     },
 
                     style: ButtonStyle(
@@ -79,13 +81,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   SizedBox(width: 35.0),
                   TextButton(
                     onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => GetStartedScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen1()));
                     },
                     style: TextButton.styleFrom(
                         primary: Color(
                             0xffFFFFFF
                         ),
-                        backgroundColor: Color(0xff3f72d7),
+                        backgroundColor: kPrimaryColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0)
                         ),
@@ -124,7 +126,7 @@ class SwipeIndicator extends StatelessWidget {
       height: isActive? 12 : 4,
       width: 4,
       decoration: BoxDecoration(
-        color: isActive? Color(0xff3f72d7) : Color(0xff3f72d7).withOpacity(0.5),
+        color: isActive? kPrimaryColor : kPrimaryColor.withOpacity(0.5),
         borderRadius: BorderRadius.all(Radius.circular(12))
       ),
     );

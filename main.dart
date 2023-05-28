@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spreexchange/models/constants.dart';
 import 'package:spreexchange/screens/onboarding_screen.dart';
 
 
@@ -11,10 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demoo',
+      title: 'Flutter SX',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Colors.lightBlue,
+          primaryColor: kPrimaryColor,
       ),
       home: OnBoardingScreen(),
     );
